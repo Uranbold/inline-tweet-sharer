@@ -62,7 +62,7 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
         $tweetlinkstring .= $prefix . $spacestring;
     }
 
-    $content = strip_tags( $content );
+    $content = ( $content );
     $tweetlinkstring .= $content . $spacestring;
 
     if ( "" != $suffix && "null" != $suffix ) {
@@ -109,7 +109,8 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
         $link .= 'inline-twitter-link';
     }
 
-    $url = 'https://twitter.com/intent/tweet?url=' . urlencode( $permalink ) . '&text=' . $tweetlinkstring . $extrafields;
+    // $url = 'https://twitter.com/intent/tweet?url=' . urlencode( $permalink ) . '&text=' . $tweetlinkstring . $extrafields;
+    $url = 'https://twitter.com/intent/tweet?url=' . urlencode( $permalink ) . '&text=' . esc_attr( $content );
     $url = str_replace( array( "\n", "\r" ), "", $url );
     $url = str_replace( array( "/" ), "\/", $url );
 
